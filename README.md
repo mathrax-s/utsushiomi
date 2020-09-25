@@ -84,11 +84,13 @@ NODE-REDはセンサからタッチ情報を受信したら、OSCに変換し、
 
 ![PureData](https://github.com/mathrax-s/utsushiomi/blob/garage/puredata-preview.png?raw=true)
 
-RaspberryPiで起動している音響ソフトのPureData（以下Pd）が奏でます。
+RaspberryPiで起動している音響ソフトのPureData（以下Pd）が音を奏でます。
 
 Pdではタッチの情報をOSCで受信し、シンプルに0〜12までの数値にします。
 
 タッチしていないときが「0」。タッチすると木のオブジェの並ぶ順番で「1〜12」となります。
+
+その信号がトリガーとなって、音色の異なる音を奏でます。4つのスライダーで音色のパラメータを調整します。
 
 
 
