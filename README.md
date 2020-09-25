@@ -2,7 +2,7 @@
 
 <img src="https://mathrax.com/wp-content/uploads/2020/03/8505029-1-2.jpg" alt="うつしおみ" title="うつしおみ">
 
-https://mathrax.com/contents/page10523
+<a href ="https://mathrax.com/contents/page10523">うつしおみ</a>
 
 木のオブジェがたくさん並ぶテーブルが、つながってあります。その木のオブジェは触れると音を奏でます。
 音を頼りにしてもいいし、手触りを頼りにしてもいいし、実は光や香りも変化するようになっていて、感覚を頼りにしながら前に進んでいく体験型の作品です。
