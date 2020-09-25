@@ -5,13 +5,13 @@
 
 [![うつしおみ](http://img.youtube.com/vi/HiOy_eePyWg/0.jpg)](http://www.youtube.com/watch?v=HiOy_eePyWg "うつしおみ")
 
-<a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
-
 たくさんの小さな木のオブジェがのったテーブルがつながっています。その木のオブジェは触れると音を奏でます。
 
 音を頼りにしてもいいし、手触りを頼りにいいし（実は光や香りも変化していて）、いろいろな感覚を頼りにしながら、前に歩いてゆく体験型の作品です。
 
 この作品は、目が不自由でも、耳が不自由でも、車椅子の高さでも、そして小さな子供の目線でも、それぞれの感覚で体験できるように考えました。
+
+<a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
 
 ---
 
