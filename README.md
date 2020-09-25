@@ -1,9 +1,9 @@
 # うつしおみ
-[![うつしおみの映像](http://img.youtube.com/vi/HiOy_eePyWg/0.jpg)](http://www.youtube.com/watch?v=HiOy_eePyWg "うつしおみ")
+<a href = "http://www.youtube.com/watch?v=HiOy_eePyWg">
+<img src = "http://img.youtube.com/vi/HiOy_eePyWg/0.jpg" alt="うつしおみの動画へ" title="うつしおみの動画" width=75%></img>
+</a>
+<a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
 
-<div style="text-align: center;">
-<a href ="https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
-</div>
 たくさんの小さな木のオブジェがのったテーブルがつながっています。その木のオブジェは触れると音を奏でます。
 
 音を頼りにしてもいいし、手触りを頼りにいいし（実は光や香りも変化していて）、いろいろな感覚を頼りにしながら、前に歩いてゆく体験型の作品です。
@@ -14,9 +14,7 @@
 
 ## 基本的なシステム
 
-<div style="text-align: center;">
-<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png" alt="system_basic" title="system basic" width=50%></img>
-</div>
+<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png" alt="system_basic" title="system basic" width=75%></img>
 
 テーブルにある木のオブジェは、触れると音を奏でます。
 
@@ -29,7 +27,7 @@
 ## キツネのあるシステム
 
 
-<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png" alt="system_fox" title="system fox" width=50%></img>
+<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png" alt="system_fox" title="system fox" width=75%></img>
 
 テーブルのうちいくつかに、キツネの形をした木の彫刻がのっています。その背中に触れても音を奏でます。
 
