@@ -8,10 +8,11 @@
 
 ---
 
-基本的なシステム
+## 基本的なシステム
 
 <img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png" alt="system_basic" title="system basic" width=50%></img>
 
+テーブルにある木のオブジェは、触れると音を奏でます。
 
 ---
 
