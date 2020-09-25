@@ -1,7 +1,5 @@
 # utsushiomi
 
-<img src="https://mathrax.com/wp-content/uploads/2020/03/8505029-1-2.jpg" alt="utsushiomi" title="utsushiomi">
-
 <a href ="https://mathrax.com/contents/page10523">utsushiomi</a>
 
 
