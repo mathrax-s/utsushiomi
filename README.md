@@ -2,11 +2,11 @@
 
 <a href ="https://mathrax.com/contents/page10523">utsushiomi</a>
 
-<img src="./system_basic.png" alt="system_basic" title="system basic" width=50%></img>
+<img src="./system_basic.png" alt="system_basic" title="system basic" width=75%></img>
 
 基本的なシステム
 
-<img src="./system_fox.png" alt="system_fox" title="system fox" width=50%></img>
+<img src="./system_fox.png" alt="system_fox" title="system fox" width=75%></img>
 
 キツネのあるシステム
 
