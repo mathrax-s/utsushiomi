@@ -3,8 +3,7 @@
 
 ## 作品の紹介
 
-<a href = "http://www.youtube.com/watch?v=HiOy_eePyWg">
-<img src = "http://img.youtube.com/vi/HiOy_eePyWg/0.jpg" alt="うつしおみの動画へ" title="うつしおみの動画" width=50%></img></a>
+[![うつしおみ](http://img.youtube.com/vi/HiOy_eePyWg/0.jpg)](http://www.youtube.com/watch?v=HiOy_eePyWg "うつしおみ")
 
 <a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
 
@@ -20,7 +19,7 @@
 
 ### 基本的なシステム
 
-<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png" alt="system_basic" title="system basic" width=75%></img>
+[![基本的なシステム](https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png)]("system_basic")
 
 テーブルにある木のオブジェは、触れると音を奏でます。
 
@@ -37,7 +36,7 @@
 ### キツネのあるシステム
 
 
-<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png" alt="system_fox" title="system fox" width=75%></img>
+[![基本的なシステム](https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png)]("system_fox")
 
 テーブルのうちいくつかに、キツネの形をした木の彫刻がのっています。その背中に触れても音を奏でます。
 
