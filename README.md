@@ -73,7 +73,7 @@ PureDataでもタッチの情報をシリアル通信で受信できますが、
 
 NODE-REDはタッチの情報をOSCに変換し、PureDataに伝えます。（PureDataのネットワーク通信はとても安定して動作します）
 
-
+![NODE-RED](https://github.com/mathrax-s/utsushiomi/blob/garage/nde-red-preview.png?raw=true)
 
 ---
 
