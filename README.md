@@ -1,5 +1,9 @@
+<html>
+  <head>
+    <meta charset='utf-8'>
+  </head>
+  <body>
 # うつしおみ
-
 
 
 ## 作品の紹介
@@ -41,3 +45,8 @@
 <img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png" alt="system_fox" title="system fox" width=75%></img>
 
 テーブルのうちいくつかに、キツネの形をした木の彫刻がのっています。その背中に触れても音を奏でます。
+
+---
+
+  </body>
+</html>
