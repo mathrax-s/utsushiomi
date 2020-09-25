@@ -13,6 +13,7 @@
 <img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_basic.png" alt="system_basic" title="system basic" width=50%></img>
 
 テーブルにある木のオブジェは、触れると音を奏でます。
+木のオブジェは、各テーブルに12個ずつあり、各テーブルに1つずつあるスピーカーから音を出力します。
 
 ---
 
