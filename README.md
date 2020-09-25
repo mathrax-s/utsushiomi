@@ -1,5 +1,7 @@
 # うつしおみ
 
+[![うつしおみの映像](http://img.youtube.com/vi/HiOy_eePyWg/0.jpg)](http://www.youtube.com/watch?v=HiOy_eePyWg "うつしおみ")
+
 <a href ="https://mathrax.com/contents/page10523">うつしおみ</a>
 
 たくさんの小さな木のオブジェがのったテーブルがつながっています。その木のオブジェは触れると音を奏でます。
