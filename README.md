@@ -6,7 +6,7 @@
 
 基本的なシステム
 
-<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png alt="system_fox" title="system fox" width=50%></img>
+<img src="https://github.com/mathrax-s/utsushiomi/raw/garage/system_fox.png" alt="system_fox" title="system fox" width=50%></img>
 
 キツネのあるシステム
 
