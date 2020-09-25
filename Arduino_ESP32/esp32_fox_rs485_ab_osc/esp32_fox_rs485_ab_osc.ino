@@ -5,7 +5,7 @@
 
 WiFiMulti wifiMulti;
 
-IPAddress ip(192, 168, 11, 28); //固定IP 192.168.1.53
+IPAddress ip(192, 168, 11, 28); //固定IP 192.168.11.28
 IPAddress gateway(192, 168, 11, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress DNS(192, 168, 11, 1);
@@ -19,6 +19,8 @@ int RX_PIN = 16;
 int TX_PIN = 17;
 int RS485 = 18;
 int slider = 0;
+
+
 void setup() {
   Serial.begin(115200);
   Serial2.begin(57600);
