@@ -2,6 +2,7 @@
 <a href = "http://www.youtube.com/watch?v=HiOy_eePyWg">
 <img src = "http://img.youtube.com/vi/HiOy_eePyWg/0.jpg" alt="うつしおみの動画へ" title="うつしおみの動画" width=75%></img>
 </a>
+
 <a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
 
 たくさんの小さな木のオブジェがのったテーブルがつながっています。その木のオブジェは触れると音を奏でます。
