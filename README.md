@@ -4,6 +4,5 @@
 
 <a href ="https://mathrax.com/contents/page10523">うつしおみ</a>
 
-木のオブジェがたくさん並ぶテーブルが、つながってあります。その木のオブジェは触れると音を奏でます。
-音を頼りにしてもいいし、手触りを頼りにしてもいいし、実は光や香りも変化するようになっていて、感覚を頼りにしながら前に進んでいく体験型の作品です。
-目が不自由でも、耳が不自由でも、車椅子や小さい子どもの目線でも、それぞれ違った感覚を頼りにして、体験できる作品です。
+
+A table with many wooden objects is connected. You will hear a sound when you touch a wooden object. It is an experience-based work that relies on the actual changes in sound, texture, light, and scent, and relies on the senses to walk forward. Even visually impaired, hearing impaired, wheelchairs and young children can experience them in different senses.
