@@ -26,7 +26,7 @@ void setup() {
   delay(10);
 
 
-  wifiMulti.addAP("mizuno3", "tawamure");
+  wifiMulti.addAP("ssid", "password");
   WiFi.config(ip, gateway, subnet, DNS);
 
   Serial.println("Connecting Wifi...");
