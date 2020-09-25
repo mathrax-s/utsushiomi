@@ -79,6 +79,8 @@ NODE-REDはタッチの情報をOSCに変換し、PureDataに伝えます。（P
 
 #### **音を奏でるプログラム「PureData」**
 
+![PureData](https://github.com/mathrax-s/utsushiomi/blob/garage/puredata-preview.png?raw=true)
+
 RaspberryPiで起動している音響ソフトのPureData（以下Pd）が奏でます。
 
 Pdではタッチの情報をOSCで受信し、シンプルに0〜12までの数値にします。
