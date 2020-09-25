@@ -2,7 +2,7 @@
 
 [![うつしおみの映像](http://img.youtube.com/vi/HiOy_eePyWg/0.jpg)](http://www.youtube.com/watch?v=HiOy_eePyWg "うつしおみ")
 
-<a href ="https://mathrax.com/contents/page10523" target="_blank">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
+<a href ="https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
 
 たくさんの小さな木のオブジェがのったテーブルがつながっています。その木のオブジェは触れると音を奏でます。
 音を頼りにしてもいいし、手触りを頼りにいいし、実は光や香りも変化していて、いろいろな感覚を頼りにしながら、前に歩いていく体験型の作品です。
