@@ -1,6 +1,6 @@
 # うつしおみ
 <a href = "http://www.youtube.com/watch?v=HiOy_eePyWg">
-<img src = "http://img.youtube.com/vi/HiOy_eePyWg/0.jpg" alt="うつしおみの動画へ" title="うつしおみの動画" width=75%></img>
+<img src = "http://img.youtube.com/vi/HiOy_eePyWg/0.jpg" alt="うつしおみの動画へ" title="うつしおみの動画" width=50% align="center"></img>
 </a>
 
 <a href = "https://mathrax.com/contents/page10523">作品「うつしおみ」について詳しく（MATHRAXのサイトへ）</a>
