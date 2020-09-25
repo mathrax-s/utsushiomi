@@ -1,4 +1,4 @@
-# utsushiomi
+# うつしおみ
 
 <a href ="https://mathrax.com/contents/page10523">うつしおみ</a>
 
