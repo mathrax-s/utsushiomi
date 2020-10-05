@@ -5,7 +5,7 @@
 
 WiFiMulti wifiMulti;
 
-IPAddress ip(192, 168, 11, 28); //固定IP 192.168.11.28
+IPAddress ip(192, 168, 11, 28);
 IPAddress gateway(192, 168, 11, 1);
 IPAddress subnet(255, 255, 255, 0);
 IPAddress DNS(192, 168, 11, 1);
@@ -24,10 +24,13 @@ int slider = 0;
 void setup() {
   Serial.begin(115200);
   Serial2.begin(57600);
+
   pinMode(RS485, OUTPUT);
   delay(10);
 
-
+  WiFi.disconnect(true, true);
+  delay(1000);
+  WiFi.mode(WIFI_STA);
   wifiMulti.addAP("ssid", "password");
   WiFi.config(ip, gateway, subnet, DNS);
 
