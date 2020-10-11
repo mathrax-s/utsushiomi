@@ -1,0 +1,999 @@
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	bright,2,2
+  20              		.global	Button
+  21              		.bss
+  22              		.align	2
+  23              		.type	Button, %object
+  24              		.size	Button, 52
+  25              	Button:
+  26 0000 00000000 		.space	52
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  26      00000000 
+  27              		.global	Status
+  28              		.align	2
+  29              		.type	Status, %object
+  30              		.size	Status, 52
+  31              	Status:
+  32 0034 00000000 		.space	52
+  32      00000000 
+  32      00000000 
+  32      00000000 
+  32      00000000 
+  33              		.global	SendData
+  34              		.align	2
+  35              		.type	SendData, %object
+  36              		.size	SendData, 52
+  37              	SendData:
+  38 0068 00000000 		.space	52
+  38      00000000 
+  38      00000000 
+  38      00000000 
+  38      00000000 
+  39              		.comm	sData,78,4
+  40              		.global	msgData
+  41              		.data
+  42              		.align	2
+  43              		.type	msgData, %object
+  44              		.size	msgData, 52
+  45              	msgData:
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 2
+
+
+  46 0000 0A000000 		.word	10
+  47 0004 14000000 		.word	20
+  48 0008 1E000000 		.word	30
+  49 000c 28000000 		.word	40
+  50 0010 32000000 		.word	50
+  51 0014 3C000000 		.word	60
+  52 0018 46000000 		.word	70
+  53 001c 50000000 		.word	80
+  54 0020 5A000000 		.word	90
+  55 0024 64000000 		.word	100
+  56 0028 6E000000 		.word	110
+  57 002c 78000000 		.word	120
+  58 0030 82000000 		.word	130
+  59              		.global	__aeabi_i2d
+  60              		.global	__aeabi_dmul
+  61              		.global	__aeabi_d2uiz
+  62              		.section	.text.main,"ax",%progbits
+  63              		.align	2
+  64              		.global	main
+  65              		.code	16
+  66              		.thumb_func
+  67              		.type	main, %function
+  68              	main:
+  69              	.LFB32:
+  70              		.file 1 "main.c"
+   1:main.c        **** #include "project.h"
+   2:main.c        **** 
+   3:main.c        **** void CapSense_DisplayState(void);
+   4:main.c        **** 
+   5:main.c        **** uint16 bright;
+   6:main.c        **** int Button[13]={0,0,0,0,0,0,0,0,0,0,0,0,0};
+   7:main.c        **** int Status[13]={0,0,0,0,0,0,0,0,0,0,0,0,0};
+   8:main.c        **** int SendData[13]={0,0,0,0,0,0,0,0,0,0,0,0,0};
+   9:main.c        **** struct SensorData{
+  10:main.c        **** 	uint16	RawCount;
+  11:main.c        **** 	uint16	Baseline;
+  12:main.c        **** 	uint16	Diff;
+  13:main.c        **** };
+  14:main.c        **** typedef struct SensorData SnsDat;
+  15:main.c        **** SnsDat sData[13];
+  16:main.c        **** 
+  17:main.c        **** int msgData[13]={10,20,30,40,50,60,70,80,90,100,110,120,130};
+  18:main.c        **** 
+  19:main.c        **** int main()
+  20:main.c        **** {
+  71              		.loc 1 20 0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 8
+  74              		@ frame_needed = 1, uses_anonymous_args = 0
+  75 0000 90B5     		push	{r4, r7, lr}
+  76              		.cfi_def_cfa_offset 12
+  77              		.cfi_offset 4, -12
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 83B0     		sub	sp, sp, #12
+  81              		.cfi_def_cfa_offset 24
+  82 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 3
+
+
+  83              		.cfi_def_cfa_register 7
+  21:main.c        ****     int i;
+  22:main.c        ****     
+  23:main.c        ****     /* Enable global interrupts */
+  24:main.c        ****     CyGlobalIntEnable;
+  84              		.loc 1 24 0
+  85              		.syntax divided
+  86              	@ 24 "main.c" 1
+  87 0006 62B6     		CPSIE   i
+  88              	@ 0 "" 2
+  25:main.c        **** 
+  26:main.c        ****     /* Start PWM and CapSense components */
+  27:main.c        ****     LED_CONTROL_Start();
+  89              		.loc 1 27 0
+  90              		.thumb
+  91              		.syntax unified
+  92 0008 FFF7FEFF 		bl	LED_CONTROL_Start
+  28:main.c        **** 
+  29:main.c        ****     CapSense_CSD_Start();
+  93              		.loc 1 29 0
+  94 000c FFF7FEFF 		bl	CapSense_CSD_Start
+  30:main.c        **** 
+  31:main.c        ****     UART_1_Start();
+  95              		.loc 1 31 0
+  96 0010 FFF7FEFF 		bl	UART_1_Start
+  32:main.c        ****    
+  33:main.c        ****     
+  34:main.c        ****     /* Initialize baselines */
+  35:main.c        ****     CapSense_CSD_InitializeAllBaselines();
+  97              		.loc 1 35 0
+  98 0014 FFF7FEFF 		bl	CapSense_CSD_InitializeAllBaselines
+  99              	.L11:
+ 100              	.LBB2:
+  36:main.c        **** 
+  37:main.c        ****     while(1u)
+  38:main.c        ****     {
+  39:main.c        ****         uint8 pinstate = Pin_Read();
+ 101              		.loc 1 39 0
+ 102 0018 FC1C     		adds	r4, r7, #3
+ 103 001a FFF7FEFF 		bl	Pin_Read
+ 104 001e 0300     		movs	r3, r0
+ 105 0020 2370     		strb	r3, [r4]
+  40:main.c        ****         
+  41:main.c        ****         //if(UART_1_UartGetByte()=='r'){
+  42:main.c        ****         if(pinstate == 0){
+ 106              		.loc 1 42 0
+ 107 0022 FB1C     		adds	r3, r7, #3
+ 108 0024 1B78     		ldrb	r3, [r3]
+ 109 0026 002B     		cmp	r3, #0
+ 110 0028 01D1     		bne	.L2
+  43:main.c        ****             CapSense_CSD_InitializeAllBaselines();
+ 111              		.loc 1 43 0
+ 112 002a FFF7FEFF 		bl	CapSense_CSD_InitializeAllBaselines
+ 113              	.L2:
+  44:main.c        ****         }
+  45:main.c        ****         
+  46:main.c        **** 
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 4
+
+
+  47:main.c        ****         
+  48:main.c        ****         /* Update all baselines */
+  49:main.c        ****         CapSense_CSD_UpdateEnabledBaselines();
+ 114              		.loc 1 49 0
+ 115 002e FFF7FEFF 		bl	CapSense_CSD_UpdateEnabledBaselines
+  50:main.c        ****         
+  51:main.c        ****    		/* Start scanning all enabled sensors */
+  52:main.c        ****     	CapSense_CSD_ScanEnabledWidgets();
+ 116              		.loc 1 52 0
+ 117 0032 FFF7FEFF 		bl	CapSense_CSD_ScanEnabledWidgets
+  53:main.c        ****         
+  54:main.c        ****         /* Place your application code here */
+  55:main.c        ****         while(CapSense_CSD_IsBusy() != 0);
+ 118              		.loc 1 55 0
+ 119 0036 C046     		nop
+ 120              	.L3:
+ 121              		.loc 1 55 0 is_stmt 0 discriminator 1
+ 122 0038 FFF7FEFF 		bl	CapSense_CSD_IsBusy
+ 123 003c 031E     		subs	r3, r0, #0
+ 124 003e FBD1     		bne	.L3
+  56:main.c        **** 
+  57:main.c        ****         for(i=0; i<13; i++){
+ 125              		.loc 1 57 0 is_stmt 1
+ 126 0040 0023     		movs	r3, #0
+ 127 0042 7B60     		str	r3, [r7, #4]
+ 128 0044 45E0     		b	.L4
+ 129              	.L10:
+  58:main.c        ****             Button[i] = CapSense_CSD_CheckIsWidgetActive(i);
+ 130              		.loc 1 58 0
+ 131 0046 7B68     		ldr	r3, [r7, #4]
+ 132 0048 1800     		movs	r0, r3
+ 133 004a FFF7FEFF 		bl	CapSense_CSD_CheckIsWidgetActive
+ 134 004e 0300     		movs	r3, r0
+ 135 0050 1900     		movs	r1, r3
+ 136 0052 314B     		ldr	r3, .L12
+ 137 0054 7A68     		ldr	r2, [r7, #4]
+ 138 0056 9200     		lsls	r2, r2, #2
+ 139 0058 D150     		str	r1, [r2, r3]
+  59:main.c        ****             if(Button[i]==1){
+ 140              		.loc 1 59 0
+ 141 005a 2F4B     		ldr	r3, .L12
+ 142 005c 7A68     		ldr	r2, [r7, #4]
+ 143 005e 9200     		lsls	r2, r2, #2
+ 144 0060 D358     		ldr	r3, [r2, r3]
+ 145 0062 012B     		cmp	r3, #1
+ 146 0064 1AD1     		bne	.L5
+  60:main.c        ****                 if(Status[i]==0){
+ 147              		.loc 1 60 0
+ 148 0066 2D4B     		ldr	r3, .L12+4
+ 149 0068 7A68     		ldr	r2, [r7, #4]
+ 150 006a 9200     		lsls	r2, r2, #2
+ 151 006c D358     		ldr	r3, [r2, r3]
+ 152 006e 002B     		cmp	r3, #0
+ 153 0070 0AD1     		bne	.L6
+  61:main.c        ****                     Status[i]=1;
+ 154              		.loc 1 61 0
+ 155 0072 2A4B     		ldr	r3, .L12+4
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 5
+
+
+ 156 0074 7A68     		ldr	r2, [r7, #4]
+ 157 0076 9200     		lsls	r2, r2, #2
+ 158 0078 0121     		movs	r1, #1
+ 159 007a D150     		str	r1, [r2, r3]
+  62:main.c        ****                     SendData[i]=1;
+ 160              		.loc 1 62 0
+ 161 007c 284B     		ldr	r3, .L12+8
+ 162 007e 7A68     		ldr	r2, [r7, #4]
+ 163 0080 9200     		lsls	r2, r2, #2
+ 164 0082 0121     		movs	r1, #1
+ 165 0084 D150     		str	r1, [r2, r3]
+ 166 0086 04E0     		b	.L7
+ 167              	.L6:
+  63:main.c        ****                 }else{
+  64:main.c        ****                     
+  65:main.c        ****                     SendData[i]=0;
+ 168              		.loc 1 65 0
+ 169 0088 254B     		ldr	r3, .L12+8
+ 170 008a 7A68     		ldr	r2, [r7, #4]
+ 171 008c 9200     		lsls	r2, r2, #2
+ 172 008e 0021     		movs	r1, #0
+ 173 0090 D150     		str	r1, [r2, r3]
+ 174              	.L7:
+  66:main.c        ****                 }
+  67:main.c        ****                 bright=65535;
+ 175              		.loc 1 67 0
+ 176 0092 244B     		ldr	r3, .L12+12
+ 177 0094 0122     		movs	r2, #1
+ 178 0096 5242     		rsbs	r2, r2, #0
+ 179 0098 1A80     		strh	r2, [r3]
+ 180 009a 09E0     		b	.L8
+ 181              	.L5:
+  68:main.c        ****             }else{
+  69:main.c        ****                 Status[i]=0;
+ 182              		.loc 1 69 0
+ 183 009c 1F4B     		ldr	r3, .L12+4
+ 184 009e 7A68     		ldr	r2, [r7, #4]
+ 185 00a0 9200     		lsls	r2, r2, #2
+ 186 00a2 0021     		movs	r1, #0
+ 187 00a4 D150     		str	r1, [r2, r3]
+  70:main.c        ****                 SendData[i]=0;
+ 188              		.loc 1 70 0
+ 189 00a6 1E4B     		ldr	r3, .L12+8
+ 190 00a8 7A68     		ldr	r2, [r7, #4]
+ 191 00aa 9200     		lsls	r2, r2, #2
+ 192 00ac 0021     		movs	r1, #0
+ 193 00ae D150     		str	r1, [r2, r3]
+ 194              	.L8:
+  71:main.c        ****                 
+  72:main.c        ****             }
+  73:main.c        ****             
+  74:main.c        ****             UART_1_UartPutChar('0'+SendData[i]);
+ 195              		.loc 1 74 0
+ 196 00b0 1B4B     		ldr	r3, .L12+8
+ 197 00b2 7A68     		ldr	r2, [r7, #4]
+ 198 00b4 9200     		lsls	r2, r2, #2
+ 199 00b6 D358     		ldr	r3, [r2, r3]
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 6
+
+
+ 200 00b8 3033     		adds	r3, r3, #48
+ 201 00ba 1800     		movs	r0, r3
+ 202 00bc FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  75:main.c        ****                 
+  76:main.c        ****             if(i<(13-1)){
+ 203              		.loc 1 76 0
+ 204 00c0 7B68     		ldr	r3, [r7, #4]
+ 205 00c2 0B2B     		cmp	r3, #11
+ 206 00c4 02DC     		bgt	.L9
+  77:main.c        ****                 UART_1_UartPutChar(',');
+ 207              		.loc 1 77 0
+ 208 00c6 2C20     		movs	r0, #44
+ 209 00c8 FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+ 210              	.L9:
+  57:main.c        ****             Button[i] = CapSense_CSD_CheckIsWidgetActive(i);
+ 211              		.loc 1 57 0 discriminator 2
+ 212 00cc 7B68     		ldr	r3, [r7, #4]
+ 213 00ce 0133     		adds	r3, r3, #1
+ 214 00d0 7B60     		str	r3, [r7, #4]
+ 215              	.L4:
+  57:main.c        ****             Button[i] = CapSense_CSD_CheckIsWidgetActive(i);
+ 216              		.loc 1 57 0 is_stmt 0 discriminator 1
+ 217 00d2 7B68     		ldr	r3, [r7, #4]
+ 218 00d4 0C2B     		cmp	r3, #12
+ 219 00d6 B6DD     		ble	.L10
+  78:main.c        ****             }
+  79:main.c        **** 		}
+  80:main.c        ****         //FOOTER    
+  81:main.c        ****         UART_1_UartPutChar(10); 
+ 220              		.loc 1 81 0 is_stmt 1
+ 221 00d8 0A20     		movs	r0, #10
+ 222 00da FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  82:main.c        ****         UART_1_UartPutChar(13); 
+ 223              		.loc 1 82 0
+ 224 00de 0D20     		movs	r0, #13
+ 225 00e0 FFF7FEFF 		bl	UART_1_SpiUartWriteTxData
+  83:main.c        ****                 
+  84:main.c        ****         LED_CONTROL_WriteCompare((uint32)bright);
+ 226              		.loc 1 84 0
+ 227 00e4 0F4B     		ldr	r3, .L12+12
+ 228 00e6 1B88     		ldrh	r3, [r3]
+ 229 00e8 1800     		movs	r0, r3
+ 230 00ea FFF7FEFF 		bl	LED_CONTROL_WriteCompare
+  85:main.c        ****         bright*=0.99;
+ 231              		.loc 1 85 0
+ 232 00ee 0D4B     		ldr	r3, .L12+12
+ 233 00f0 1B88     		ldrh	r3, [r3]
+ 234 00f2 1800     		movs	r0, r3
+ 235 00f4 FFF7FEFF 		bl	__aeabi_i2d
+ 236 00f8 0B4A     		ldr	r2, .L12+16
+ 237 00fa 0C4B     		ldr	r3, .L12+20
+ 238 00fc FFF7FEFF 		bl	__aeabi_dmul
+ 239 0100 0300     		movs	r3, r0
+ 240 0102 0C00     		movs	r4, r1
+ 241 0104 1800     		movs	r0, r3
+ 242 0106 2100     		movs	r1, r4
+ 243 0108 FFF7FEFF 		bl	__aeabi_d2uiz
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 7
+
+
+ 244 010c 0300     		movs	r3, r0
+ 245 010e 9AB2     		uxth	r2, r3
+ 246 0110 044B     		ldr	r3, .L12+12
+ 247 0112 1A80     		strh	r2, [r3]
+ 248              	.LBE2:
+  86:main.c        ****     }
+ 249              		.loc 1 86 0
+ 250 0114 80E7     		b	.L11
+ 251              	.L13:
+ 252 0116 C046     		.align	2
+ 253              	.L12:
+ 254 0118 00000000 		.word	Button
+ 255 011c 00000000 		.word	Status
+ 256 0120 00000000 		.word	SendData
+ 257 0124 00000000 		.word	bright
+ 258 0128 AE47E17A 		.word	2061584302
+ 259 012c 14AEEF3F 		.word	1072672276
+ 260              		.cfi_endproc
+ 261              	.LFE32:
+ 262              		.size	main, .-main
+ 263              		.text
+ 264              	.Letext0:
+ 265              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 266              		.section	.debug_info,"",%progbits
+ 267              	.Ldebug_info0:
+ 268 0000 AF010000 		.4byte	0x1af
+ 269 0004 0400     		.2byte	0x4
+ 270 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 271 000a 04       		.byte	0x4
+ 272 000b 01       		.uleb128 0x1
+ 273 000c 5A000000 		.4byte	.LASF28
+ 274 0010 0C       		.byte	0xc
+ 275 0011 B7010000 		.4byte	.LASF29
+ 276 0015 FB000000 		.4byte	.LASF30
+ 277 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 278 001d 00000000 		.4byte	0
+ 279 0021 00000000 		.4byte	.Ldebug_line0
+ 280 0025 02       		.uleb128 0x2
+ 281 0026 01       		.byte	0x1
+ 282 0027 06       		.byte	0x6
+ 283 0028 F7010000 		.4byte	.LASF0
+ 284 002c 02       		.uleb128 0x2
+ 285 002d 01       		.byte	0x1
+ 286 002e 08       		.byte	0x8
+ 287 002f 15000000 		.4byte	.LASF1
+ 288 0033 02       		.uleb128 0x2
+ 289 0034 02       		.byte	0x2
+ 290 0035 05       		.byte	0x5
+ 291 0036 CC010000 		.4byte	.LASF2
+ 292 003a 02       		.uleb128 0x2
+ 293 003b 02       		.byte	0x2
+ 294 003c 07       		.byte	0x7
+ 295 003d 47000000 		.4byte	.LASF3
+ 296 0041 02       		.uleb128 0x2
+ 297 0042 04       		.byte	0x4
+ 298 0043 05       		.byte	0x5
+ 299 0044 E9010000 		.4byte	.LASF4
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 8
+
+
+ 300 0048 02       		.uleb128 0x2
+ 301 0049 04       		.byte	0x4
+ 302 004a 07       		.byte	0x7
+ 303 004b 35000000 		.4byte	.LASF5
+ 304 004f 02       		.uleb128 0x2
+ 305 0050 08       		.byte	0x8
+ 306 0051 05       		.byte	0x5
+ 307 0052 A9010000 		.4byte	.LASF6
+ 308 0056 02       		.uleb128 0x2
+ 309 0057 08       		.byte	0x8
+ 310 0058 07       		.byte	0x7
+ 311 0059 64010000 		.4byte	.LASF7
+ 312 005d 03       		.uleb128 0x3
+ 313 005e 04       		.byte	0x4
+ 314 005f 05       		.byte	0x5
+ 315 0060 696E7400 		.ascii	"int\000"
+ 316 0064 02       		.uleb128 0x2
+ 317 0065 04       		.byte	0x4
+ 318 0066 07       		.byte	0x7
+ 319 0067 57010000 		.4byte	.LASF8
+ 320 006b 04       		.uleb128 0x4
+ 321 006c DD010000 		.4byte	.LASF9
+ 322 0070 02       		.byte	0x2
+ 323 0071 F701     		.2byte	0x1f7
+ 324 0073 2C000000 		.4byte	0x2c
+ 325 0077 04       		.uleb128 0x4
+ 326 0078 F4000000 		.4byte	.LASF10
+ 327 007c 02       		.byte	0x2
+ 328 007d F801     		.2byte	0x1f8
+ 329 007f 3A000000 		.4byte	0x3a
+ 330 0083 04       		.uleb128 0x4
+ 331 0084 50010000 		.4byte	.LASF11
+ 332 0088 02       		.byte	0x2
+ 333 0089 F901     		.2byte	0x1f9
+ 334 008b 48000000 		.4byte	0x48
+ 335 008f 02       		.uleb128 0x2
+ 336 0090 04       		.byte	0x4
+ 337 0091 04       		.byte	0x4
+ 338 0092 0F000000 		.4byte	.LASF12
+ 339 0096 02       		.uleb128 0x2
+ 340 0097 08       		.byte	0x8
+ 341 0098 04       		.byte	0x4
+ 342 0099 E8000000 		.4byte	.LASF13
+ 343 009d 02       		.uleb128 0x2
+ 344 009e 01       		.byte	0x1
+ 345 009f 08       		.byte	0x8
+ 346 00a0 BE010000 		.4byte	.LASF14
+ 347 00a4 02       		.uleb128 0x2
+ 348 00a5 04       		.byte	0x4
+ 349 00a6 07       		.byte	0x7
+ 350 00a7 A0010000 		.4byte	.LASF15
+ 351 00ab 02       		.uleb128 0x2
+ 352 00ac 08       		.byte	0x8
+ 353 00ad 04       		.byte	0x4
+ 354 00ae 94010000 		.4byte	.LASF16
+ 355 00b2 05       		.uleb128 0x5
+ 356 00b3 2A000000 		.4byte	.LASF31
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 9
+
+
+ 357 00b7 06       		.byte	0x6
+ 358 00b8 01       		.byte	0x1
+ 359 00b9 09       		.byte	0x9
+ 360 00ba E3000000 		.4byte	0xe3
+ 361 00be 06       		.uleb128 0x6
+ 362 00bf 7B010000 		.4byte	.LASF17
+ 363 00c3 01       		.byte	0x1
+ 364 00c4 0A       		.byte	0xa
+ 365 00c5 77000000 		.4byte	0x77
+ 366 00c9 00       		.byte	0
+ 367 00ca 06       		.uleb128 0x6
+ 368 00cb C3010000 		.4byte	.LASF18
+ 369 00cf 01       		.byte	0x1
+ 370 00d0 0B       		.byte	0xb
+ 371 00d1 77000000 		.4byte	0x77
+ 372 00d5 02       		.byte	0x2
+ 373 00d6 06       		.uleb128 0x6
+ 374 00d7 F2010000 		.4byte	.LASF19
+ 375 00db 01       		.byte	0x1
+ 376 00dc 0C       		.byte	0xc
+ 377 00dd 77000000 		.4byte	0x77
+ 378 00e1 04       		.byte	0x4
+ 379 00e2 00       		.byte	0
+ 380 00e3 07       		.uleb128 0x7
+ 381 00e4 23000000 		.4byte	.LASF20
+ 382 00e8 01       		.byte	0x1
+ 383 00e9 0E       		.byte	0xe
+ 384 00ea B2000000 		.4byte	0xb2
+ 385 00ee 08       		.uleb128 0x8
+ 386 00ef EF000000 		.4byte	.LASF32
+ 387 00f3 01       		.byte	0x1
+ 388 00f4 13       		.byte	0x13
+ 389 00f5 5D000000 		.4byte	0x5d
+ 390 00f9 00000000 		.4byte	.LFB32
+ 391 00fd 30010000 		.4byte	.LFE32-.LFB32
+ 392 0101 01       		.uleb128 0x1
+ 393 0102 9C       		.byte	0x9c
+ 394 0103 2C010000 		.4byte	0x12c
+ 395 0107 09       		.uleb128 0x9
+ 396 0108 6900     		.ascii	"i\000"
+ 397 010a 01       		.byte	0x1
+ 398 010b 15       		.byte	0x15
+ 399 010c 5D000000 		.4byte	0x5d
+ 400 0110 02       		.uleb128 0x2
+ 401 0111 91       		.byte	0x91
+ 402 0112 6C       		.sleb128 -20
+ 403 0113 0A       		.uleb128 0xa
+ 404 0114 18000000 		.4byte	.LBB2
+ 405 0118 FC000000 		.4byte	.LBE2-.LBB2
+ 406 011c 0B       		.uleb128 0xb
+ 407 011d 8B010000 		.4byte	.LASF21
+ 408 0121 01       		.byte	0x1
+ 409 0122 27       		.byte	0x27
+ 410 0123 6B000000 		.4byte	0x6b
+ 411 0127 02       		.uleb128 0x2
+ 412 0128 91       		.byte	0x91
+ 413 0129 6B       		.sleb128 -21
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 10
+
+
+ 414 012a 00       		.byte	0
+ 415 012b 00       		.byte	0
+ 416 012c 0C       		.uleb128 0xc
+ 417 012d 84010000 		.4byte	.LASF22
+ 418 0131 01       		.byte	0x1
+ 419 0132 05       		.byte	0x5
+ 420 0133 77000000 		.4byte	0x77
+ 421 0137 05       		.uleb128 0x5
+ 422 0138 03       		.byte	0x3
+ 423 0139 00000000 		.4byte	bright
+ 424 013d 0D       		.uleb128 0xd
+ 425 013e 5D000000 		.4byte	0x5d
+ 426 0142 4D010000 		.4byte	0x14d
+ 427 0146 0E       		.uleb128 0xe
+ 428 0147 A4000000 		.4byte	0xa4
+ 429 014b 0C       		.byte	0xc
+ 430 014c 00       		.byte	0
+ 431 014d 0C       		.uleb128 0xc
+ 432 014e D6010000 		.4byte	.LASF23
+ 433 0152 01       		.byte	0x1
+ 434 0153 06       		.byte	0x6
+ 435 0154 3D010000 		.4byte	0x13d
+ 436 0158 05       		.uleb128 0x5
+ 437 0159 03       		.byte	0x3
+ 438 015a 00000000 		.4byte	Button
+ 439 015e 0C       		.uleb128 0xc
+ 440 015f 00000000 		.4byte	.LASF24
+ 441 0163 01       		.byte	0x1
+ 442 0164 07       		.byte	0x7
+ 443 0165 3D010000 		.4byte	0x13d
+ 444 0169 05       		.uleb128 0x5
+ 445 016a 03       		.byte	0x3
+ 446 016b 00000000 		.4byte	Status
+ 447 016f 0C       		.uleb128 0xc
+ 448 0170 03020000 		.4byte	.LASF25
+ 449 0174 01       		.byte	0x1
+ 450 0175 08       		.byte	0x8
+ 451 0176 3D010000 		.4byte	0x13d
+ 452 017a 05       		.uleb128 0x5
+ 453 017b 03       		.byte	0x3
+ 454 017c 00000000 		.4byte	SendData
+ 455 0180 0D       		.uleb128 0xd
+ 456 0181 E3000000 		.4byte	0xe3
+ 457 0185 90010000 		.4byte	0x190
+ 458 0189 0E       		.uleb128 0xe
+ 459 018a A4000000 		.4byte	0xa4
+ 460 018e 0C       		.byte	0xc
+ 461 018f 00       		.byte	0
+ 462 0190 0C       		.uleb128 0xc
+ 463 0191 E3010000 		.4byte	.LASF26
+ 464 0195 01       		.byte	0x1
+ 465 0196 0F       		.byte	0xf
+ 466 0197 80010000 		.4byte	0x180
+ 467 019b 05       		.uleb128 0x5
+ 468 019c 03       		.byte	0x3
+ 469 019d 00000000 		.4byte	sData
+ 470 01a1 0C       		.uleb128 0xc
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 11
+
+
+ 471 01a2 07000000 		.4byte	.LASF27
+ 472 01a6 01       		.byte	0x1
+ 473 01a7 11       		.byte	0x11
+ 474 01a8 3D010000 		.4byte	0x13d
+ 475 01ac 05       		.uleb128 0x5
+ 476 01ad 03       		.byte	0x3
+ 477 01ae 00000000 		.4byte	msgData
+ 478 01b2 00       		.byte	0
+ 479              		.section	.debug_abbrev,"",%progbits
+ 480              	.Ldebug_abbrev0:
+ 481 0000 01       		.uleb128 0x1
+ 482 0001 11       		.uleb128 0x11
+ 483 0002 01       		.byte	0x1
+ 484 0003 25       		.uleb128 0x25
+ 485 0004 0E       		.uleb128 0xe
+ 486 0005 13       		.uleb128 0x13
+ 487 0006 0B       		.uleb128 0xb
+ 488 0007 03       		.uleb128 0x3
+ 489 0008 0E       		.uleb128 0xe
+ 490 0009 1B       		.uleb128 0x1b
+ 491 000a 0E       		.uleb128 0xe
+ 492 000b 55       		.uleb128 0x55
+ 493 000c 17       		.uleb128 0x17
+ 494 000d 11       		.uleb128 0x11
+ 495 000e 01       		.uleb128 0x1
+ 496 000f 10       		.uleb128 0x10
+ 497 0010 17       		.uleb128 0x17
+ 498 0011 00       		.byte	0
+ 499 0012 00       		.byte	0
+ 500 0013 02       		.uleb128 0x2
+ 501 0014 24       		.uleb128 0x24
+ 502 0015 00       		.byte	0
+ 503 0016 0B       		.uleb128 0xb
+ 504 0017 0B       		.uleb128 0xb
+ 505 0018 3E       		.uleb128 0x3e
+ 506 0019 0B       		.uleb128 0xb
+ 507 001a 03       		.uleb128 0x3
+ 508 001b 0E       		.uleb128 0xe
+ 509 001c 00       		.byte	0
+ 510 001d 00       		.byte	0
+ 511 001e 03       		.uleb128 0x3
+ 512 001f 24       		.uleb128 0x24
+ 513 0020 00       		.byte	0
+ 514 0021 0B       		.uleb128 0xb
+ 515 0022 0B       		.uleb128 0xb
+ 516 0023 3E       		.uleb128 0x3e
+ 517 0024 0B       		.uleb128 0xb
+ 518 0025 03       		.uleb128 0x3
+ 519 0026 08       		.uleb128 0x8
+ 520 0027 00       		.byte	0
+ 521 0028 00       		.byte	0
+ 522 0029 04       		.uleb128 0x4
+ 523 002a 16       		.uleb128 0x16
+ 524 002b 00       		.byte	0
+ 525 002c 03       		.uleb128 0x3
+ 526 002d 0E       		.uleb128 0xe
+ 527 002e 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 12
+
+
+ 528 002f 0B       		.uleb128 0xb
+ 529 0030 3B       		.uleb128 0x3b
+ 530 0031 05       		.uleb128 0x5
+ 531 0032 49       		.uleb128 0x49
+ 532 0033 13       		.uleb128 0x13
+ 533 0034 00       		.byte	0
+ 534 0035 00       		.byte	0
+ 535 0036 05       		.uleb128 0x5
+ 536 0037 13       		.uleb128 0x13
+ 537 0038 01       		.byte	0x1
+ 538 0039 03       		.uleb128 0x3
+ 539 003a 0E       		.uleb128 0xe
+ 540 003b 0B       		.uleb128 0xb
+ 541 003c 0B       		.uleb128 0xb
+ 542 003d 3A       		.uleb128 0x3a
+ 543 003e 0B       		.uleb128 0xb
+ 544 003f 3B       		.uleb128 0x3b
+ 545 0040 0B       		.uleb128 0xb
+ 546 0041 01       		.uleb128 0x1
+ 547 0042 13       		.uleb128 0x13
+ 548 0043 00       		.byte	0
+ 549 0044 00       		.byte	0
+ 550 0045 06       		.uleb128 0x6
+ 551 0046 0D       		.uleb128 0xd
+ 552 0047 00       		.byte	0
+ 553 0048 03       		.uleb128 0x3
+ 554 0049 0E       		.uleb128 0xe
+ 555 004a 3A       		.uleb128 0x3a
+ 556 004b 0B       		.uleb128 0xb
+ 557 004c 3B       		.uleb128 0x3b
+ 558 004d 0B       		.uleb128 0xb
+ 559 004e 49       		.uleb128 0x49
+ 560 004f 13       		.uleb128 0x13
+ 561 0050 38       		.uleb128 0x38
+ 562 0051 0B       		.uleb128 0xb
+ 563 0052 00       		.byte	0
+ 564 0053 00       		.byte	0
+ 565 0054 07       		.uleb128 0x7
+ 566 0055 16       		.uleb128 0x16
+ 567 0056 00       		.byte	0
+ 568 0057 03       		.uleb128 0x3
+ 569 0058 0E       		.uleb128 0xe
+ 570 0059 3A       		.uleb128 0x3a
+ 571 005a 0B       		.uleb128 0xb
+ 572 005b 3B       		.uleb128 0x3b
+ 573 005c 0B       		.uleb128 0xb
+ 574 005d 49       		.uleb128 0x49
+ 575 005e 13       		.uleb128 0x13
+ 576 005f 00       		.byte	0
+ 577 0060 00       		.byte	0
+ 578 0061 08       		.uleb128 0x8
+ 579 0062 2E       		.uleb128 0x2e
+ 580 0063 01       		.byte	0x1
+ 581 0064 3F       		.uleb128 0x3f
+ 582 0065 19       		.uleb128 0x19
+ 583 0066 03       		.uleb128 0x3
+ 584 0067 0E       		.uleb128 0xe
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 13
+
+
+ 585 0068 3A       		.uleb128 0x3a
+ 586 0069 0B       		.uleb128 0xb
+ 587 006a 3B       		.uleb128 0x3b
+ 588 006b 0B       		.uleb128 0xb
+ 589 006c 49       		.uleb128 0x49
+ 590 006d 13       		.uleb128 0x13
+ 591 006e 11       		.uleb128 0x11
+ 592 006f 01       		.uleb128 0x1
+ 593 0070 12       		.uleb128 0x12
+ 594 0071 06       		.uleb128 0x6
+ 595 0072 40       		.uleb128 0x40
+ 596 0073 18       		.uleb128 0x18
+ 597 0074 9642     		.uleb128 0x2116
+ 598 0076 19       		.uleb128 0x19
+ 599 0077 01       		.uleb128 0x1
+ 600 0078 13       		.uleb128 0x13
+ 601 0079 00       		.byte	0
+ 602 007a 00       		.byte	0
+ 603 007b 09       		.uleb128 0x9
+ 604 007c 34       		.uleb128 0x34
+ 605 007d 00       		.byte	0
+ 606 007e 03       		.uleb128 0x3
+ 607 007f 08       		.uleb128 0x8
+ 608 0080 3A       		.uleb128 0x3a
+ 609 0081 0B       		.uleb128 0xb
+ 610 0082 3B       		.uleb128 0x3b
+ 611 0083 0B       		.uleb128 0xb
+ 612 0084 49       		.uleb128 0x49
+ 613 0085 13       		.uleb128 0x13
+ 614 0086 02       		.uleb128 0x2
+ 615 0087 18       		.uleb128 0x18
+ 616 0088 00       		.byte	0
+ 617 0089 00       		.byte	0
+ 618 008a 0A       		.uleb128 0xa
+ 619 008b 0B       		.uleb128 0xb
+ 620 008c 01       		.byte	0x1
+ 621 008d 11       		.uleb128 0x11
+ 622 008e 01       		.uleb128 0x1
+ 623 008f 12       		.uleb128 0x12
+ 624 0090 06       		.uleb128 0x6
+ 625 0091 00       		.byte	0
+ 626 0092 00       		.byte	0
+ 627 0093 0B       		.uleb128 0xb
+ 628 0094 34       		.uleb128 0x34
+ 629 0095 00       		.byte	0
+ 630 0096 03       		.uleb128 0x3
+ 631 0097 0E       		.uleb128 0xe
+ 632 0098 3A       		.uleb128 0x3a
+ 633 0099 0B       		.uleb128 0xb
+ 634 009a 3B       		.uleb128 0x3b
+ 635 009b 0B       		.uleb128 0xb
+ 636 009c 49       		.uleb128 0x49
+ 637 009d 13       		.uleb128 0x13
+ 638 009e 02       		.uleb128 0x2
+ 639 009f 18       		.uleb128 0x18
+ 640 00a0 00       		.byte	0
+ 641 00a1 00       		.byte	0
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 14
+
+
+ 642 00a2 0C       		.uleb128 0xc
+ 643 00a3 34       		.uleb128 0x34
+ 644 00a4 00       		.byte	0
+ 645 00a5 03       		.uleb128 0x3
+ 646 00a6 0E       		.uleb128 0xe
+ 647 00a7 3A       		.uleb128 0x3a
+ 648 00a8 0B       		.uleb128 0xb
+ 649 00a9 3B       		.uleb128 0x3b
+ 650 00aa 0B       		.uleb128 0xb
+ 651 00ab 49       		.uleb128 0x49
+ 652 00ac 13       		.uleb128 0x13
+ 653 00ad 3F       		.uleb128 0x3f
+ 654 00ae 19       		.uleb128 0x19
+ 655 00af 02       		.uleb128 0x2
+ 656 00b0 18       		.uleb128 0x18
+ 657 00b1 00       		.byte	0
+ 658 00b2 00       		.byte	0
+ 659 00b3 0D       		.uleb128 0xd
+ 660 00b4 01       		.uleb128 0x1
+ 661 00b5 01       		.byte	0x1
+ 662 00b6 49       		.uleb128 0x49
+ 663 00b7 13       		.uleb128 0x13
+ 664 00b8 01       		.uleb128 0x1
+ 665 00b9 13       		.uleb128 0x13
+ 666 00ba 00       		.byte	0
+ 667 00bb 00       		.byte	0
+ 668 00bc 0E       		.uleb128 0xe
+ 669 00bd 21       		.uleb128 0x21
+ 670 00be 00       		.byte	0
+ 671 00bf 49       		.uleb128 0x49
+ 672 00c0 13       		.uleb128 0x13
+ 673 00c1 2F       		.uleb128 0x2f
+ 674 00c2 0B       		.uleb128 0xb
+ 675 00c3 00       		.byte	0
+ 676 00c4 00       		.byte	0
+ 677 00c5 00       		.byte	0
+ 678              		.section	.debug_aranges,"",%progbits
+ 679 0000 1C000000 		.4byte	0x1c
+ 680 0004 0200     		.2byte	0x2
+ 681 0006 00000000 		.4byte	.Ldebug_info0
+ 682 000a 04       		.byte	0x4
+ 683 000b 00       		.byte	0
+ 684 000c 0000     		.2byte	0
+ 685 000e 0000     		.2byte	0
+ 686 0010 00000000 		.4byte	.LFB32
+ 687 0014 30010000 		.4byte	.LFE32-.LFB32
+ 688 0018 00000000 		.4byte	0
+ 689 001c 00000000 		.4byte	0
+ 690              		.section	.debug_ranges,"",%progbits
+ 691              	.Ldebug_ranges0:
+ 692 0000 00000000 		.4byte	.LFB32
+ 693 0004 30010000 		.4byte	.LFE32
+ 694 0008 00000000 		.4byte	0
+ 695 000c 00000000 		.4byte	0
+ 696              		.section	.debug_line,"",%progbits
+ 697              	.Ldebug_line0:
+ 698 0000 8B000000 		.section	.debug_str,"MS",%progbits,1
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 15
+
+
+ 698      02004100 
+ 698      00000201 
+ 698      FB0E0D00 
+ 698      01010101 
+ 699              	.LASF24:
+ 700 0000 53746174 		.ascii	"Status\000"
+ 700      757300
+ 701              	.LASF27:
+ 702 0007 6D736744 		.ascii	"msgData\000"
+ 702      61746100 
+ 703              	.LASF12:
+ 704 000f 666C6F61 		.ascii	"float\000"
+ 704      7400
+ 705              	.LASF1:
+ 706 0015 756E7369 		.ascii	"unsigned char\000"
+ 706      676E6564 
+ 706      20636861 
+ 706      7200
+ 707              	.LASF20:
+ 708 0023 536E7344 		.ascii	"SnsDat\000"
+ 708      617400
+ 709              	.LASF31:
+ 710 002a 53656E73 		.ascii	"SensorData\000"
+ 710      6F724461 
+ 710      746100
+ 711              	.LASF5:
+ 712 0035 6C6F6E67 		.ascii	"long unsigned int\000"
+ 712      20756E73 
+ 712      69676E65 
+ 712      6420696E 
+ 712      7400
+ 713              	.LASF3:
+ 714 0047 73686F72 		.ascii	"short unsigned int\000"
+ 714      7420756E 
+ 714      7369676E 
+ 714      65642069 
+ 714      6E7400
+ 715              	.LASF28:
+ 716 005a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 716      43313120 
+ 716      352E342E 
+ 716      31203230 
+ 716      31363036 
+ 717 008d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 717      20726576 
+ 717      6973696F 
+ 717      6E203233 
+ 717      37373135 
+ 718 00c0 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 718      66756E63 
+ 718      74696F6E 
+ 718      2D736563 
+ 718      74696F6E 
+ 719              	.LASF13:
+ 720 00e8 646F7562 		.ascii	"double\000"
+ 720      6C6500
+ 721              	.LASF32:
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 16
+
+
+ 722 00ef 6D61696E 		.ascii	"main\000"
+ 722      00
+ 723              	.LASF10:
+ 724 00f4 75696E74 		.ascii	"uint16\000"
+ 724      313600
+ 725              	.LASF30:
+ 726 00fb 433A5C55 		.ascii	"C:\\Users\\SHOZO\\Documents\\GitHub\\utsushiomi\\PS"
+ 726      73657273 
+ 726      5C53484F 
+ 726      5A4F5C44 
+ 726      6F63756D 
+ 727 0128 6F43345C 		.ascii	"oC4\\CHIGASAKI_Utsushiomi_2020_kit.cydsn\000"
+ 727      43484947 
+ 727      4153414B 
+ 727      495F5574 
+ 727      73757368 
+ 728              	.LASF11:
+ 729 0150 75696E74 		.ascii	"uint32\000"
+ 729      333200
+ 730              	.LASF8:
+ 731 0157 756E7369 		.ascii	"unsigned int\000"
+ 731      676E6564 
+ 731      20696E74 
+ 731      00
+ 732              	.LASF7:
+ 733 0164 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 733      206C6F6E 
+ 733      6720756E 
+ 733      7369676E 
+ 733      65642069 
+ 734              	.LASF17:
+ 735 017b 52617743 		.ascii	"RawCount\000"
+ 735      6F756E74 
+ 735      00
+ 736              	.LASF22:
+ 737 0184 62726967 		.ascii	"bright\000"
+ 737      687400
+ 738              	.LASF21:
+ 739 018b 70696E73 		.ascii	"pinstate\000"
+ 739      74617465 
+ 739      00
+ 740              	.LASF16:
+ 741 0194 6C6F6E67 		.ascii	"long double\000"
+ 741      20646F75 
+ 741      626C6500 
+ 742              	.LASF15:
+ 743 01a0 73697A65 		.ascii	"sizetype\000"
+ 743      74797065 
+ 743      00
+ 744              	.LASF6:
+ 745 01a9 6C6F6E67 		.ascii	"long long int\000"
+ 745      206C6F6E 
+ 745      6720696E 
+ 745      7400
+ 746              	.LASF29:
+ 747 01b7 6D61696E 		.ascii	"main.c\000"
+ 747      2E6300
+ARM GAS  C:\Users\SHOZO\AppData\Local\Temp\ccTwovJ4.s 			page 17
+
+
+ 748              	.LASF14:
+ 749 01be 63686172 		.ascii	"char\000"
+ 749      00
+ 750              	.LASF18:
+ 751 01c3 42617365 		.ascii	"Baseline\000"
+ 751      6C696E65 
+ 751      00
+ 752              	.LASF2:
+ 753 01cc 73686F72 		.ascii	"short int\000"
+ 753      7420696E 
+ 753      7400
+ 754              	.LASF23:
+ 755 01d6 42757474 		.ascii	"Button\000"
+ 755      6F6E00
+ 756              	.LASF9:
+ 757 01dd 75696E74 		.ascii	"uint8\000"
+ 757      3800
+ 758              	.LASF26:
+ 759 01e3 73446174 		.ascii	"sData\000"
+ 759      6100
+ 760              	.LASF4:
+ 761 01e9 6C6F6E67 		.ascii	"long int\000"
+ 761      20696E74 
+ 761      00
+ 762              	.LASF19:
+ 763 01f2 44696666 		.ascii	"Diff\000"
+ 763      00
+ 764              	.LASF0:
+ 765 01f7 7369676E 		.ascii	"signed char\000"
+ 765      65642063 
+ 765      68617200 
+ 766              	.LASF25:
+ 767 0203 53656E64 		.ascii	"SendData\000"
+ 767      44617461 
+ 767      00
+ 768              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

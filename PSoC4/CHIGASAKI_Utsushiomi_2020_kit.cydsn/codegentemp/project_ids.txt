@@ -1,0 +1,7 @@
+C:\Users\SHOZO\Documents\GitHub\utsushiomi\PSoC4\CHIGASAKI_Utsushiomi_2020_kit.cydsn\CHIGASAKI_Utsushiomi_2020_kit.cyprj|10ea1a3a-2bd6-4836-b393-b66544cdc7c7
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|a641076e-c001-4593-bd31-3d89ad8525a8
+C:\Users\SHOZO\Documents\PSoC Creator\4.3\Downloads ( 4.3).cylib\Downloads ( 4.3).cyprj|e095c9a8-79c4-4ce2-b6a5-76fd90447ce7
+C:\Users\SHOZO\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|a74004b4-05ec-47a5-a35c-6a1136afe440
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c1319543-e789-45c9-99a4-26e5bfbe4ea6
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ab0cf3c5-3fd4-4281-9fdb-7a5211de4eaf
+C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|1e0b1e9c-4d02-42d8-b43c-4484a0ca14d0
